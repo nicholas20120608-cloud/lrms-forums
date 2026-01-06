@@ -1,0 +1,199 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.post-form, .auth-form, .message-form {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.post-form h2, .auth-form h2, .message-form h2 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+input, textarea, button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.posts {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.post {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.post h3 {
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.messages {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.message.sent {
+  background-color: #e1f5fe;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.message.received {
+  background-color: #f1f8e9;
+}
+
+.message p {
+  margin: 0;
+  flex: 1;
+}
+
+.message img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.users {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.users h2 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.users ul {
+  list-style: none;
+  padding: 0;
+}
+
+.users li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.users li:last-child {
+  border-bottom: none;
+}
+
+.users a {
+  color: #4CAF50;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.users a:hover {
+  text-decoration: underline;
+}
+
+.pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.pfp-small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.post-author {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}

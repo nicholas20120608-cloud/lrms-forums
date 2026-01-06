@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DM with <%= receiver.username %> - LRMS Forums</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <header>
+    <h1>
+      <% if (receiver.profile_image) { %>
+        <img src="/uploads/<%= receiver.profile_image %>" alt="Profile Picture" class="pfp">
+      <% } %>
+      DM with <%= receiver.username %>
+    </h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <section class="messages">
+      <% messages.forEach(msg => { %>
+        <div class="message <%= msg.sender_id === user.userId ? 'sent' : 'received' %>">
+          <% if (msg.profile_image) { %>
+            <img src="/uploads/<%= msg.profile_image %>" alt="Profile Picture" class="pfp-small">
+          <% } %>
+          <div>
+            <p><%= msg.content %></p>
+            <% if (msg.image) { %>
+              <img src="/uploads/<%= msg.image %>" alt="Message Image">
+            <% } %>
+            <small><%= msg.username %> - <%= new Date(msg.created_at).toLocaleString() %></small>
+          </div>
+        </div>
+      <% }) %>
+    </section>
+    <section class="message-form">
+      <form action="/dm/<%= receiver.id %>" method="POST" enctype="multipart/form-data">
+        <textarea name="content" placeholder="Type your message..." required></textarea>
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+  <script>
+    const socket = io();
+    socket.emit('join',  user.userId );
+  </script>
+</body>
+</html>

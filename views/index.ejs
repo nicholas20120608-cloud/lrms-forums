@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LRMS Forums</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Lufkin Road Middle School Forums</h1>
+    <nav>
+      <a href="/">Home</a>
+      <% if (user.role === 'admin') { %>
+        <a href="/admin">Admin</a>
+      <% } %>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <section class="post-form">
+      <h2>Create a New Post</h2>
+      <form action="/post" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Post Title" required>
+        <textarea name="content" placeholder="Post Content" required></textarea>
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Post</button>
+      </form>
+    </section>
+    <section class="posts">
+      <h2>Recent Posts</h2>
+      <% posts.forEach(post => { %>
+        <div class="post">
+          <h3><%= post.title %></h3>
+          <div class="post-author">
+            <% if (post.profile_image) { %>
+              <img src="/uploads/<%= post.profile_image %>" alt="Profile Picture" class="pfp">
+            <% } %>
+            <small>By <%= post.username %> on <%= new Date(post.created_at).toLocaleString() %></small>
+          </div>
+          <p><%= post.content %></p>
+          <% if (post.image) { %>
+            <img src="/uploads/<%= post.image %>" alt="Post Image">
+          <% } %>
+        </div>
+      <% }) %>
+    </section>
+    <section class="users">
+      <h2>Users</h2>
+      <ul>
+        <% users.forEach(u => { %>
+          <li>
+            <% if (u.profile_image) { %>
+              <img src="/uploads/<%= u.profile_image %>" alt="Profile Picture" class="pfp-small">
+            <% } %>
+            <%= u.username %>
+            <a href="/dm/<%= u.id %>">DM</a>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
